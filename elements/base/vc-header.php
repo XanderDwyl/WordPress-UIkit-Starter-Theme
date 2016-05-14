@@ -49,15 +49,17 @@ if ($color = get_header_textcolor()) {
 <?php if ($nav_left || $nav_right) : ?>
     <nav id="navbar" class="uk-navbar">
         <div class="uk-grid">
-            <div class="uk-width-4-10"><?= $nav_left ?></div>
-            <div class="uk-width-2-10 uk-container-center uk-text-center">
+            <div class="uk-width-4-10 uk-panel uk-panel-box uk-container-center"><?= $nav_left ?></div>
+            <div class="uk-width-2-10 uk-panel uk-panel-box uk-container-center uk-text-center">
                 <div class="site-logo" id="site-logo">
-                    <a href="<?= esc_url(home_url('/')); ?>" title="<?= esc_attr(get_bloginfo('name', 'display')); ?>" class="uk-link-reset">
-                        <?php bloginfo('name'); ?>
+                    <a href="<?= esc_url(home_url('/')); ?>"
+                    title="<?= esc_attr(get_bloginfo('name', 'display')); ?>"
+                    class="uk-link-reset">
+                        <img src="<?php echo( get_header_image() ); ?>" title="<?php bloginfo('name'); ?>"/>
                     </a>
                 </div>
             </div>
-            <div class="uk-width-4-10"><?= $nav_right ?></div>
+            <div class="uk-width-4-10 uk-panel uk-panel-box uk-container-center"><?= $nav_right ?></div>
         </div>
         <div class="uk-container uk-container-center">
             <a href="#offcanvas-menu" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
