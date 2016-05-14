@@ -1,0 +1,66 @@
+/*
+ * Override some styles
+ */
+
+#navbar {
+  & > .uk-grid {
+    & > div {
+      & > .uk-panel-box {
+        background: transparent;
+      }
+
+      ul {
+        padding: 43px 0;
+        list-style: none;
+        & > li {
+          &.uk-open {
+            & > a, & > .uk-dropdown.uk-dropdown-navbar {
+              background: transparent;
+            }
+
+            .uk-nav-navbar {
+              position: absolute;
+              width: 100%;
+              z-index: 9499;
+              padding: 4px 0 4px;
+              background-color: #000;
+              background-color: rgba(0, 0, 0, 0.95);
+              border-radius: 3px;
+
+              & > li {
+                float: none;
+                border-top: 1px solid #242d30;
+
+                &:first-child {
+                  border-top: 0;
+                }
+
+                & > a {
+                  position: relative;
+                  color: #fff !important;
+                  white-space: normal;
+                  font-weight: 600 !important;
+                }
+              }
+
+              &:before {
+                content: '';
+                width: 0 !important;
+                height: 0 !important;
+                border-left: 8px solid transparent !important;
+                border-right: 8px solid transparent !important;
+                border-bottom: 8px solid rgba(0, 0, 0, 0.95) !important;
+                position: absolute !important;
+                top: -8px !important;
+                left: 50%;
+                margin-left: -8px !important;
+                float: none !important;
+                padding: 0 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

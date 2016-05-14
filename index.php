@@ -4,8 +4,9 @@
  */
 
 get_header();
-get_template_part('elements/base/header');
-get_template_part('elements/base/navigation');
+get_template_part('elements/base/vc-header');
+// get_template_part('elements/base/header');
+// get_template_part('elements/base/navigation');
 
 get_template_part('elements/base/precontent');
 

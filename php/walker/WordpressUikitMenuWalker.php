@@ -2,7 +2,7 @@
 
 /**
  * Works in Wordpress 4.0 and above
- * 
+ *
  * @author Nicolai Stäger
  * @version 2014-09-28
  */
@@ -34,13 +34,13 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
      * @param int $id
      *                Current item ID.
      */
-    public function start_el(&$output, $item, $depth = 0, $args = array(), $current_object_id = 0) 
+    public function start_el(&$output, $item, $depth = 0, $args = array(), $current_object_id = 0)
     {
         $indent = str_repeat("\t", $depth);
 
         // prepare ID-attribute content for li
         $li_id = 'menu-item-' . $item->ID;
-        
+
         // prepare class-attribute content for li
         $li_classes = empty($item->classes) ? array() : array_filter((array)$item->classes);
 
@@ -55,7 +55,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
 
         // prepare title/content for link
         $link_title = $item->title;
-        
+
         // if this is the current active link
         if ($item->current) {
             $li_classes[] = 'uk-active';
@@ -64,15 +64,15 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         // if this element has children
         if ($this->has_children) {
             $li_classes[] = 'uk-parent';
-            if ($this->_type == 'navbar') $li_attributes[] = 'data-uk-dropdown=""';
+            if ($this->_type == 'navbar') $li_attributes[] = 'data-uk-dropdown="{pos:\'bottom-center\'}"';
         }
 
         // apply filters
         $li_id = apply_filters('nav_menu_item_id', $li_id, $item, $args);
         $li_attributes[] = sprintf('id="%s"', $li_id);
 
-        $li_classes = apply_filters('nav_menu_css_class', $li_classes, $item, $args);
-        $li_attributes[] = sprintf('class="%s"', implode(" ", $li_classes));
+        // $li_classes = apply_filters('nav_menu_css_class', $li_classes, $item, $args);
+        // $li_attributes[] = sprintf('class="%s"', implode(" ", $li_classes));
 
         $link_title = apply_filters('the_title', $link_title, $item->ID);
 
@@ -91,7 +91,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
 
         if ($this->has_children && $depth == 0) {
             if ($this->_type == 'navbar') {
-                $output .= $indent . '<div class="uk-dropdown uk-dropdown-navbar">' . "\n";
+                $output .= $indent . '<div class="uk-dropdown uk-dropdown-navbar sub-navbar">' . "\n";
             }
         }
     }
@@ -101,7 +101,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
      *
      * @param string $output
      *                Passed by reference. Used to append additional content.
-     * @param object $item  
+     * @param object $item
      *                Page data object. Not used.
      * @param int $depth
      *                Depth of page. Not Used.
@@ -156,7 +156,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
      * @param array $args
      *                An array of arguments. @see wp_nav_menu()
      */
-    public function end_lvl(&$output, $depth = 0, $args = array()) 
+    public function end_lvl(&$output, $depth = 0, $args = array())
     {
         $indent = str_repeat("\t", $depth);
 
